@@ -17,7 +17,7 @@ public class stepDefinition {
     WebDriver driver;
     String baseUrl = "https://www.saucedemo.com/";
 
-  @Given("Halaman login saucedemo")
+    @Given("Halaman login saucedemo")
     public void halaman_login_saucedemo() {
 
         WebDriverManager.firefoxdriver().setup();
@@ -35,7 +35,7 @@ public class stepDefinition {
 
     }
 
-  @When("User input username")
+    @When("User input username")
     public void userInputUserName() {
 
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
@@ -73,13 +73,15 @@ public class stepDefinition {
     }
 
     @When("User click button add to cart")
-    public void userClickAddToCart()  {
-        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();;
+    public void userClickAddToCart() {
+        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+        ;
     }
 
     @And("User click button cart")
     public void userClickCart() {
-        driver.findElement(By.id("shopping_cart_container")).click();;
+        driver.findElement(By.id("shopping_cart_container")).click();
+        ;
     }
 
     @Then("User in cart page")
@@ -92,13 +94,15 @@ public class stepDefinition {
     }
 
     @When("User click sidebar menu")
-    public void userClickSideBar()  {
-        driver.findElement(By.id("react-burger-menu-btn")).click();;
+    public void userClickSideBar() {
+        driver.findElement(By.id("react-burger-menu-btn")).click();
+        ;
     }
 
     @And("User click menu about")
-    public void userClickMenuAbout()  {
-        driver.findElement(By.id("about_sidebar_link")).click();;
+    public void userClickMenuAbout() {
+        driver.findElement(By.id("about_sidebar_link")).click();
+        ;
     }
 
     @Then("User in about page")
@@ -111,16 +115,44 @@ public class stepDefinition {
     }
 
     @And("User click logout")
-    public void userClickLogout()  {
-        driver.findElement(By.id("logout_sidebar_link")).click();;
+    public void userClickLogout() {
+        driver.findElement(By.id("logout_sidebar_link")).click();
+        ;
     }
 
     @Then("User in login page")
     public void userInLoginPage() {
         String ActualLogin = driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/div/div[1]/h4")).getText();
-        String ExpectedLogin= "Accepted usernames are:";
+        String ExpectedLogin = "Accepted usernames are:";
         Assert.assertEquals(ActualLogin, ExpectedLogin);
 
+        driver.close();
+    }
+
+    @When("User input (.*) as username$")
+    public void userInputUserNameDDT(String username) {
+
+        driver.findElement(By.id("user-name")).sendKeys(username);
+    }
+
+    @And("User input (.*) as password$")
+    public void userInputPasswordDDT(String password) {
+
+        driver.findElement(By.id("password")).sendKeys(password);
+    }
+
+    @Then("User verify (.*) login result$")
+    public void userVerifyStatus(String status) {
+        if (status.equals("success")) { // assert success login
+            String ActualProducts = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
+            String ExpectedProducts = "Products";
+            Assert.assertEquals(ActualProducts, ExpectedProducts);
+        } else { // assert error message
+            String ActualFailedUserName = driver
+                    .findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3")).getText();
+            String ExpectedFailedUserName = "Epic sadface: Username and password do not match any user in this service";
+            Assert.assertEquals(ActualFailedUserName, ExpectedFailedUserName);
+        }
         driver.close();
     }
 
