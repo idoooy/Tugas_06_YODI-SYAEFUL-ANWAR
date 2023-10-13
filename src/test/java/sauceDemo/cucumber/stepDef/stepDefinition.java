@@ -17,8 +17,8 @@ public class stepDefinition {
     WebDriver driver;
     String baseUrl = "https://www.saucedemo.com/";
 
-    @Given("Halaman login saucedemo")
-    public void halaman_login_saucedemo() {
+    @Given("Login page saucedemo")
+    public void loginPageSauceDemo() {
 
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions opt = new FirefoxOptions();
@@ -32,12 +32,10 @@ public class stepDefinition {
         String ActualTitle = driver.findElement(By.className("login_logo")).getText();
         String ExpectedTitle = "Swag Labs";
         Assert.assertEquals(ActualTitle, ExpectedTitle);
-
     }
 
     @When("User input username")
     public void userInputUserName() {
-
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
     }
 
@@ -75,13 +73,11 @@ public class stepDefinition {
     @When("User click button add to cart")
     public void userClickAddToCart() {
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
-        ;
     }
 
     @And("User click button cart")
     public void userClickCart() {
         driver.findElement(By.id("shopping_cart_container")).click();
-        ;
     }
 
     @Then("User in cart page")
@@ -96,13 +92,11 @@ public class stepDefinition {
     @When("User click sidebar menu")
     public void userClickSideBar() {
         driver.findElement(By.id("react-burger-menu-btn")).click();
-        ;
     }
 
     @And("User click menu about")
     public void userClickMenuAbout() {
         driver.findElement(By.id("about_sidebar_link")).click();
-        ;
     }
 
     @Then("User in about page")
@@ -117,7 +111,6 @@ public class stepDefinition {
     @And("User click logout")
     public void userClickLogout() {
         driver.findElement(By.id("logout_sidebar_link")).click();
-        ;
     }
 
     @Then("User in login page")
@@ -131,13 +124,11 @@ public class stepDefinition {
 
     @When("User input (.*) as username$")
     public void userInputUserNameDDT(String username) {
-
         driver.findElement(By.id("user-name")).sendKeys(username);
     }
 
     @And("User input (.*) as password$")
     public void userInputPasswordDDT(String password) {
-
         driver.findElement(By.id("password")).sendKeys(password);
     }
 

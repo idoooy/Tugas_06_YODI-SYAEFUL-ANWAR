@@ -1,7 +1,8 @@
 Feature: Logout Application saucedemo
 
+  @Logout
   Scenario: Success Logout
-    Given Halaman login saucedemo
+    Given Login page saucedemo
     When User input username
     And User input password
     And User click login button

@@ -1,7 +1,8 @@
 Feature: Add To Chart
 
+  @AddToCart
   Scenario: Success Add To Chart
-    Given Halaman login saucedemo
+    Given Login page saucedemo
     When User input username
     And User input password
     And User click login button

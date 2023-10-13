@@ -2,7 +2,7 @@ Feature: Login Application saucedemo
 
   @LoginDDT
   Scenario Outline: Success Login
-    Given Halaman login saucedemo
+    Given Login page saucedemo
     When User input <username> as username
     And User input <password> as password
     And User click login button

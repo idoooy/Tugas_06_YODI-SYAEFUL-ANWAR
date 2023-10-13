@@ -33,8 +33,7 @@ public class loginFalse {
         driver.findElement(By.id("login-button")).click();
 
         // Verifikasi notifikasi error ketika login dengan username yang salah
-        String ActualFailedUserName = driver
-                .findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3")).getText();
+        String ActualFailedUserName = driver.findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3")).getText();
         String ExpectedFailedUserName = "Epic sadface: Username and password do not match any user in this service";
         Assert.assertEquals(ActualFailedUserName, ExpectedFailedUserName);
 

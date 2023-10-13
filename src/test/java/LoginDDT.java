@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +36,6 @@ public class LoginDDT {
                 String username = nextLine[0]; // read column 1 for username
                 String password = nextLine[1]; // read column 2 for password
                 String status = nextLine[2]; // read column 3 for expected login status
-                // add functionality after variable has been filled from test data
 
                 // driver = new ChromeDriver(opt); //Versi chrome v.14
                 driver = new FirefoxDriver(opt);
