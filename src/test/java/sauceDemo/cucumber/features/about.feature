@@ -1,7 +1,7 @@
 Feature: Go To About
 
   @About
-  Scenario: Success Add To Chart
+  Scenario: Success Go To About
     Given Login page saucedemo
     When User input username
     And User input password
