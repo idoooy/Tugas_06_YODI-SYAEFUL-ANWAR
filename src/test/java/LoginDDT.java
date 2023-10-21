@@ -56,8 +56,6 @@ public class LoginDDT {
                             .getText();
                     String ExpectedProducts = "Products";
                     Assert.assertEquals(ActualProducts, ExpectedProducts);
-
-                    driver.close();
                 } else { // assert error message
                     String ActualFailedUserName = driver
                             .findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3")).getText();
