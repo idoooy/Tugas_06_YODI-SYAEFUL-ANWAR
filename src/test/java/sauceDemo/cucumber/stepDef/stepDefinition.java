@@ -14,6 +14,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.util.concurrent.TimeUnit;
 
 public class stepDefinition {
+
+    //stepDefinition page Login dibuat sebagai Given
+
     WebDriver driver;
     String baseUrl = "https://www.saucedemo.com/";
 
